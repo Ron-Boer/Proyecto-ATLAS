@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ATLAS — Tabla periódica interactiva de propiedades atómicas.">
+  <title>ATLAS — Tabla Periódica Interactiva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">🥼</div>
+      <div>
+        <div class="brand-name">ATLAS</div>
+        <div class="brand-subtitle">Explorador de propiedades atómicas</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <label class="search-box" for="searchInput">
+        <span>⌕</span>
+        <input id="searchInput" type="search" placeholder="Buscar elemento, símbolo o número..." autocomplete="off">
+        <kbd>Ctrl K</kbd>
+      </label>
+      <button id="themeToggle" class="icon-button" aria-label="Cambiar tema" title="Cambiar tema">☼</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">QUÍMICA · INTERFAZ INTERACTIVA</p>
+        <h1>Tabla periódica</h1>
+        <p class="hero-text">Explora los 118 elementos y consulta sus propiedades básicas.</p>
+        <button id="openLessons" class="filter-btn">
+          Explorar enlaces químicos →
+        </button>
+      </div>
+      <div class="hero-status">
+        <span class="status-dot"></span>
+        <span id="resultCount">118 elementos</span>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Controles de la tabla">
+      <div class="control-group">
+        <span class="control-label">Familia</span>
+        <div class="family-filters" id="familyFilters">
+          <button class="filter-btn active" data-family="all">Todos</button>
+          <button class="filter-btn" data-family="alkali">Alcalinos</button>
+          <button class="filter-btn" data-family="alkaline">Alcalinotérreos</button>
+          <button class="filter-btn" data-family="transition">Transición</button>
+          <button class="filter-btn" data-family="post-transition">Otros metales</button>
+          <button class="filter-btn" data-family="metalloid">Metaloides</button>
+          <button class="filter-btn" data-family="nonmetal">No metales</button>
+          <button class="filter-btn" data-family="halogen">Halógenos</button>
+          <button class="filter-btn" data-family="noble">Gases nobles</button>
+          <button class="filter-btn" data-family="lanthanide">Lantánidos</button>
+          <button class="filter-btn" data-family="actinide">Actínidos</button>
+        </div>
+      </div>
+
+      <label class="property-select">
+        <span>Visualizar</span>
+        <select id="propertySelect">
+          <option value="default">Clasificación química</option>
+          <option value="atomicNumber">Número atómico</option>
+          <option value="mass">Masa atómica</option>
+          <option value="electronegativity">Electronegatividad</option>
+          <option value="covalentRadius">Radio covalente</option>
+          <option value="ionizationEnergy">Energía de ionización</option>
+          <option value="effectiveNuclearCharge">Carga nuclear efectiva</option>
+          <option value="atomicRadius">Radio atómico</option>
+          <option value="ionicRadius">Radio iónico</option>
+          <option value="electronAffinity">Afinidad electrónica</option>
+          <option value="density">Densidad</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="periodic-wrapper">
+      <div class="periodic-scroll">
+        <div class="group-labels" id="groupLabels"></div>
+        <div id="periodicTable" class="periodic-table" aria-label="Tabla periódica interactiva"></div>
+      </div>
+    </section>
+
+    <section class="legend" id="legend">
+      <div class="legend-title">Familias</div>
+      <div class="legend-items">
+        <span><i class="legend-color alkali"></i>Alcalinos</span>
+        <span><i class="legend-color alkaline"></i>Alcalinotérreos</span>
+        <span><i class="legend-color transition"></i>Transición</span>
+        <span><i class="legend-color post-transition"></i>Otros metales</span>
+        <span><i class="legend-color metalloid"></i>Metaloides</span>
+        <span><i class="legend-color nonmetal"></i>No metales</span>
+        <span><i class="legend-color halogen"></i>Halógenos</span>
+        <span><i class="legend-color noble"></i>Gases nobles</span>
+        <span><i class="legend-color lanthanide"></i>Lantánidos</span>
+        <span><i class="legend-color actinide"></i>Actínidos</span>
+      </div>
+    </section>
+  </main>
+
+  <aside id="elementPanel" class="element-panel" aria-hidden="true">
+    <div class="panel-backdrop" id="panelBackdrop"></div>
+    <div class="panel-content">
+      <button id="closePanel" class="close-button" aria-label="Cerrar">×</button>
+      <div id="elementDetail"></div>
+    </div>
+  </aside>
+
+  <div id="propertyDescription" class="property-description" aria-live="polite">
+    Selecciona una propiedad para conocer su significado.
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <footer>
+    <!-- Logo -->
+    <div class="footerConten">
+      <div class="footer-logo-section">
+        <img src="https://sii.veracruz.tecnm.mx/img/itver.png" alt="ITVER Logo" class="footerLogo">
+        <p>Instituto Tecnologico de Veracruz</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/elements.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/lessons.js"></script>
+</body>
+
+</html>
